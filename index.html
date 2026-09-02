@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SYNTHRA — Products that did not exist this morning</title>
+  <meta name="description" content="SYNTHRA Forge invents a brand-new digital product, builds the full sellable kit, and hands you the rights. Drop 001 is live." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050308;
+      --ink: #f4f0ff;
+      --muted: #9b93b3;
+      --cyan: #00f0ff;
+      --mag: #ff2bd6;
+      --gold: #ffd166;
+      --card: rgba(12, 8, 22, 0.72);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); font-family: Syne, system-ui, sans-serif; }
+    body { overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .glow {
+      position: fixed; inset: -20%;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0,240,255,.18), transparent 42%),
+        radial-gradient(circle at 80% 20%, rgba(255,43,214,.16), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(255,209,102,.08), transparent 46%);
+      pointer-events: none; z-index: 0; filter: blur(8px);
+    }
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: .08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    header {
+      position: relative; z-index: 5;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0;
+    }
+    .logo {
+      font-family: "Bebas Neue", sans-serif; letter-spacing: .18em; font-size: 28px;
+      text-shadow: 0 0 18px rgba(0,240,255,.7);
+    }
+    .logo span { color: var(--mag); text-shadow: 0 0 18px rgba(255,43,214,.8); }
+    nav { display: flex; gap: 22px; align-items: center; color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 22px; border-radius: 999px; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; cursor: pointer; border: 0;
+    }
+    .btn-neon {
+      background: linear-gradient(90deg, var(--cyan), var(--mag));
+      color: #09040f;
+      box-shadow: 0 0 28px rgba(0,240,255,.45), 0 0 48px rgba(255,43,214,.28);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .hero {
+      position: relative; z-index: 3;
+      min-height: 88vh; display: grid; place-items: center; text-align: center;
+      padding: 40px 0 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: -1; opacity: .55;
+      background: url("assets/hero.jpg") center/cover no-repeat;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 78%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 78%);
+    }
+    .kicker {
+      color: var(--cyan); font-size: 12px; letter-spacing: .42em; text-transform: uppercase; font-weight: 800;
+      text-shadow: 0 0 16px rgba(0,240,255,.8);
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(64px, 14vw, 168px);
+      line-height: .82; letter-spacing: .02em;
+      text-shadow: 0 0 40px rgba(255,43,214,.35), 0 0 80px rgba(0,240,255,.25);
+    }
+    h1 em { font-style: normal; color: transparent;
+      background: linear-gradient(90deg, var(--cyan), #fff, var(--mag));
+      -webkit-background-clip: text; background-clip: text;
+      filter: drop-shadow(0 0 18px rgba(0,240,255,.55));
+    }
+    .sub {
+      max-width: 680px; margin: 22px auto 34px; color: #d7d0ee; font-size: clamp(16px, 2.2vw, 22px); line-height: 1.45;
+    }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .pulse {
+      margin-top: 28px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+      text-shadow: 0 0 12px rgba(255,209,102,.7);
+    }
+
+    section { position: relative; z-index: 3; padding: 88px 0; }
+    h2 {
+      font-family: "Bebas Neue", sans-serif; font-size: clamp(40px, 7vw, 84px);
+      line-height: .9; margin-bottom: 16px;
+    }
+    .lede { color: var(--muted); max-width: 560px; font-size: 18px; }
+
+    .product {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center;
+    }
+    .product img {
+      width: 100%; border-radius: 24px;
+      box-shadow: 0 0 80px rgba(255,43,214,.25), 0 0 40px rgba(0,240,255,.2);
+    }
+    .tag {
+      display: inline-block; margin-bottom: 12px; color: var(--mag);
+      letter-spacing: .28em; font-size: 12px; font-weight: 800; text-transform: uppercase;
+    }
+    .stack { display: grid; gap: 12px; margin: 28px 0 32px; }
+    .stack li {
+      list-style: none; padding: 14px 16px; border: 1px solid rgba(255,255,255,.08);
+      background: var(--card); border-radius: 12px;
+    }
+
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+    .card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px; padding: 26px;
+      box-shadow: inset 0 0 40px rgba(0,240,255,.04);
+    }
+    .card b { display: block; color: var(--cyan); letter-spacing: .14em; font-size: 12px; margin-bottom: 10px; text-transform: uppercase; }
+
+    .pricing {
+      text-align: center; border: 1px solid rgba(255,43,214,.35);
+      background: linear-gradient(180deg, rgba(255,43,214,.08), rgba(0,240,255,.05));
+      border-radius: 28px; padding: 48px 28px;
+      box-shadow: 0 0 80px rgba(255,43,214,.18);
+    }
+    .price { font-family: "Bebas Neue", sans-serif; font-size: 96px; line-height: .8; }
+    .price span { font-size: 32px; vertical-align: super; color: var(--cyan); }
+    .fine { color: var(--muted); margin: 10px 0 28px; }
+
+    .faq { display: grid; gap: 12px; margin-top: 28px; }
+    details {
+      background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 18px 20px;
+    }
+    summary { cursor: pointer; font-weight: 800; }
+    details p { color: var(--muted); margin-top: 10px; }
+
+    footer { position: relative; z-index: 3; padding: 40px 0 60px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; }
+
+    @media (max-width: 840px) {
+      nav a { display: none; }
+      .product, .grid3 { grid-template-columns: 1fr; }
+      .price { font-size: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="noise"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="logo">SYN<span>THRA</span></div>
+      <nav>
+        <a href="#forge">The Forge</a>
+        <a href="#how">How</a>
+        <a href="#buy">Get Drop 001</a>
+        <a class="btn btn-neon" href="#buy">Unlock</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div>
+        <p class="kicker">Drop 001 is live</p>
+        <h1>PRODUCTS<br>BORN, NOT<br><em>PLANNED.</em></h1>
+        <p class="sub">SYNTHRA invents a digital product that has never been sold, builds the entire kit, and hands you the rights. You do not buy a course. You buy something that did not exist this morning.</p>
+        <div class="hero-actions">
+          <a class="btn btn-neon" href="#buy">Take Drop 001 — $147</a>
+          <a class="btn btn-ghost" href="#forge">See the weapon</a>
+        </div>
+        <p class="pulse">AI-forged. One owner kit. Sell it tonight.</p>
+      </div>
+    </section>
+
+    <section class="product" id="forge">
+      <img src="assets/product.jpg" alt="SYNTHRA Forge vault" />
+      <div>
+        <p class="tag">Never seen before</p>
+        <h2>THE MIRROR MARKET ENGINE</h2>
+        <p class="lede">Drop 001 is not a template pack. It is a product that finds the unpaid skill already living in you and forges it into a priced digital asset with a launch attached.</p>
+        <ul class="stack">
+          <li>Unique product concept — a category that was not a market yesterday</li>
+          <li>Full delivery vault: prompts, scripts, sheets, SOPs, assets</li>
+          <li>Sales page copy + price architecture that does not sound like 2019 internet</li>
+          <li>7-email launch + 12 ad angles</li>
+          <li>Commercial rights. Sell it as yours.</li>
+        </ul>
+        <a class="btn btn-neon" href="#buy">Claim the drop</a>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2>THREE MOVES.</h2>
+      <p class="lede">No funnel circus. No 47-module course. In and out with a product that can take money.</p>
+      <div class="grid3">
+        <div class="card"><b>01 — Scan</b>You feed one sentence: the skill, the scar, the thing people already ask you for.</div>
+        <div class="card"><b>02 — Birth</b>The Forge invents the offer, the name, the deliverable, and the reason it should not exist yet — which is why it hits.</div>
+        <div class="card"><b>03 — Fire</b>You get the kit. You list it. You collect. The product is finished before the doubt shows up.</div>
+      </div>
+    </section>
+
+    <section id="buy">
+      <div class="pricing">
+        <p class="tag">Drop 001</p>
+        <h2>MIRROR MARKET</h2>
+        <div class="price"><span>$</span>147</div>
+        <p class="fine">One-time. Instant vault. Yours to sell.</p>
+        <a class="btn btn-neon" href="mailto:hello@synthra.drop?subject=SYNTHRA%20Drop%20001">Unlock the vault</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>NO FAIRY TALES.</h2>
+      <div class="faq">
+        <details open>
+          <summary>What exactly arrives?</summary>
+          <p>A complete digital product kit: the offer, the files, the copy, the emails, the ads, and the rights. Not a lecture. A thing you can sell.</p>
+        </details>
+        <details>
+          <summary>Is this another AI wrapper course?</summary>
+          <p>No. Courses teach. SYNTHRA manufactures. You leave with inventory.</p>
+        </details>
+        <details>
+          <summary>Can I resell it?</summary>
+          <p>Yes. Commercial use is included for Drop 001. Do not resell the raw Forge system itself.</p>
+        </details>
+        <details>
+          <summary>Why $147?</summary>
+          <p>Cheap enough to move. Expensive enough that you will actually launch it.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div>SYNTHRA © 2026</div>
+      <div>Born in the dark. Sold in the light.</div>
+    </footer>
+  </div>
+</body>
+</html>
