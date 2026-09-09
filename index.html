@@ -23,7 +23,6 @@
     body { overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-
     .glow {
       position: fixed; inset: -20%;
       background:
@@ -32,11 +31,6 @@
         radial-gradient(circle at 50% 90%, rgba(255,209,102,.08), transparent 46%);
       pointer-events: none; z-index: 0; filter: blur(8px);
     }
-    .noise {
-      position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: .08;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
     header {
       position: relative; z-index: 5;
       display: flex; justify-content: space-between; align-items: center;
@@ -62,7 +56,6 @@
       background: transparent; color: var(--ink);
       border: 1px solid rgba(255,255,255,.18);
     }
-
     .hero {
       position: relative; z-index: 3;
       min-height: 88vh; display: grid; place-items: center; text-align: center;
@@ -70,7 +63,10 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: -1; opacity: .55;
-      background: url("assets/hero.jpg") center/cover no-repeat;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(0,240,255,.28), transparent 45%),
+        radial-gradient(ellipse at 70% 30%, rgba(255,43,214,.22), transparent 50%),
+        url("assets/hero.jpg") center/cover no-repeat;
       mask-image: radial-gradient(ellipse at center, black 40%, transparent 78%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 78%);
     }
@@ -98,20 +94,23 @@
       margin-top: 28px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
       text-shadow: 0 0 12px rgba(255,209,102,.7);
     }
-
     section { position: relative; z-index: 3; padding: 88px 0; }
     h2 {
       font-family: "Bebas Neue", sans-serif; font-size: clamp(40px, 7vw, 84px);
       line-height: .9; margin-bottom: 16px;
     }
     .lede { color: var(--muted); max-width: 560px; font-size: 18px; }
-
     .product {
       display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center;
     }
-    .product img {
-      width: 100%; border-radius: 24px;
+    .product-art {
+      width: 100%; min-height: 360px; border-radius: 24px;
+      background:
+        linear-gradient(160deg, rgba(0,240,255,.25), rgba(255,43,214,.2) 55%, rgba(5,3,8,.9)),
+        url("assets/product.jpg") center/cover no-repeat;
       box-shadow: 0 0 80px rgba(255,43,214,.25), 0 0 40px rgba(0,240,255,.2);
+      display: grid; place-items: center;
+      font-family: "Bebas Neue", sans-serif; letter-spacing: .2em; font-size: 28px;
     }
     .tag {
       display: inline-block; margin-bottom: 12px; color: var(--mag);
@@ -122,7 +121,6 @@
       list-style: none; padding: 14px 16px; border: 1px solid rgba(255,255,255,.08);
       background: var(--card); border-radius: 12px;
     }
-
     .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
     .card {
       background: var(--card); border: 1px solid rgba(255,255,255,.08);
@@ -130,7 +128,6 @@
       box-shadow: inset 0 0 40px rgba(0,240,255,.04);
     }
     .card b { display: block; color: var(--cyan); letter-spacing: .14em; font-size: 12px; margin-bottom: 10px; text-transform: uppercase; }
-
     .pricing {
       text-align: center; border: 1px solid rgba(255,43,214,.35);
       background: linear-gradient(180deg, rgba(255,43,214,.08), rgba(0,240,255,.05));
@@ -140,16 +137,13 @@
     .price { font-family: "Bebas Neue", sans-serif; font-size: 96px; line-height: .8; }
     .price span { font-size: 32px; vertical-align: super; color: var(--cyan); }
     .fine { color: var(--muted); margin: 10px 0 28px; }
-
     .faq { display: grid; gap: 12px; margin-top: 28px; }
     details {
       background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 18px 20px;
     }
     summary { cursor: pointer; font-weight: 800; }
     details p { color: var(--muted); margin-top: 10px; }
-
     footer { position: relative; z-index: 3; padding: 40px 0 60px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; }
-
     @media (max-width: 840px) {
       nav a { display: none; }
       .product, .grid3 { grid-template-columns: 1fr; }
@@ -159,8 +153,6 @@
 </head>
 <body>
   <div class="glow"></div>
-  <div class="noise"></div>
-
   <div class="wrap">
     <header>
       <div class="logo">SYN<span>THRA</span></div>
@@ -171,7 +163,6 @@
         <a class="btn btn-neon" href="#buy">Unlock</a>
       </nav>
     </header>
-
     <section class="hero">
       <div class="hero-bg"></div>
       <div>
@@ -185,9 +176,8 @@
         <p class="pulse">AI-forged. One owner kit. Sell it tonight.</p>
       </div>
     </section>
-
     <section class="product" id="forge">
-      <img src="assets/product.jpg" alt="SYNTHRA Forge vault" />
+      <div class="product-art" role="img" aria-label="SYNTHRA Forge vault">FORGE VAULT</div>
       <div>
         <p class="tag">Never seen before</p>
         <h2>THE MIRROR MARKET ENGINE</h2>
@@ -202,7 +192,6 @@
         <a class="btn btn-neon" href="#buy">Claim the drop</a>
       </div>
     </section>
-
     <section id="how">
       <h2>THREE MOVES.</h2>
       <p class="lede">No funnel circus. No 47-module course. In and out with a product that can take money.</p>
@@ -212,7 +201,6 @@
         <div class="card"><b>03 — Fire</b>You get the kit. You list it. You collect. The product is finished before the doubt shows up.</div>
       </div>
     </section>
-
     <section id="buy">
       <div class="pricing">
         <p class="tag">Drop 001</p>
@@ -222,7 +210,6 @@
         <a class="btn btn-neon" href="mailto:hello@synthra.drop?subject=SYNTHRA%20Drop%20001">Unlock the vault</a>
       </div>
     </section>
-
     <section>
       <h2>NO FAIRY TALES.</h2>
       <div class="faq">
@@ -244,7 +231,6 @@
         </details>
       </div>
     </section>
-
     <footer>
       <div>SYNTHRA © 2026</div>
       <div>Born in the dark. Sold in the light.</div>
