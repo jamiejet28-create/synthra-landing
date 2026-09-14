@@ -6,7 +6,7 @@ Expected live URL after Pages is approved:
 https://jamiejet28-create.github.io/synthra-landing/
 
 ## Status
-- `index.html` is in repo root (image-independent; no external asset deps).
+- `index.html` is in repo root (image-independent; no local image asset deps).
 - Pages deploy workflow is on `main` (`.github/workflows/pages.yml`).
 - Ready for one-time Pages enable.
 
