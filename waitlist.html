@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SYNTHRA — Drop 001 waitlist</title>
+  <meta name="description" content="Get first access to SYNTHRA Drop 001 — Mirror Market Engine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#050308; --ink:#f4f0ff; --muted:#9b93b3; --cyan:#00f0ff; --mag:#ff2bd6; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { min-height:100vh; background:var(--bg); color:var(--ink); font-family:Syne,system-ui,sans-serif;
+      display:grid; place-items:center; padding:32px 20px;
+      background-image: radial-gradient(circle at 20% 10%, rgba(0,240,255,.16), transparent 42%), radial-gradient(circle at 80% 80%, rgba(255,43,214,.14), transparent 40%); }
+    .card { width:min(520px,100%); background:rgba(12,8,22,.82); border:1px solid rgba(255,255,255,.1); border-radius:24px; padding:36px 28px; }
+    .logo { font-family:"Bebas Neue",sans-serif; letter-spacing:.18em; font-size:26px; }
+    .logo span { color:var(--mag); }
+    h1 { font-family:"Bebas Neue",sans-serif; font-size:clamp(40px,8vw,64px); line-height:.9; margin:18px 0 10px; }
+    p { color:var(--muted); line-height:1.5; margin-bottom:22px; }
+    label { display:block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:800; margin:12px 0 6px; }
+    input, textarea { width:100%; background:#09040f; border:1px solid rgba(255,255,255,.16); color:var(--ink); border-radius:12px; padding:12px 14px; font:inherit; }
+    button { margin-top:18px; width:100%; border:0; border-radius:999px; padding:14px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+      background:linear-gradient(90deg,var(--cyan),var(--mag)); color:#09040f; }
+    a { color:var(--cyan); }
+    .back { display:inline-block; margin-bottom:16px; font-size:13px; color:var(--muted); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <a class="back" href="./index.html">← SYNTHRA</a>
+    <div class="logo">SYN<span>THRA</span></div>
+    <h1>DROP 001 WAITLIST</h1>
+    <p>Pages is not live yet. Leave an email. When the vault goes public you get first shot at Mirror Market Engine — $147, commercial rights included.</p>
+    <form action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="you@domain.com" />
+      <label for="note">What skill should the Forge scan? (optional)</label>
+      <textarea id="note" name="note" rows="3" placeholder="One sentence."></textarea>
+      <input type="hidden" name="_subject" value="SYNTHRA Drop 001 waitlist" />
+      <button type="submit">Hold my spot</button>
+    </form>
+    <p style="margin-top:16px;font-size:12px">Swap Formspree <code>REPLACE_ME</code> after Pages is on.</p>
+  </div>
+</body>
+</html>
