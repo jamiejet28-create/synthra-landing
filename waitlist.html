@@ -25,6 +25,7 @@
       background:linear-gradient(90deg,var(--cyan),var(--mag)); color:#09040f; }
     a { color:var(--cyan); }
     .back { display:inline-block; margin-bottom:16px; font-size:13px; color:var(--muted); text-decoration:none; }
+    .ok { display:none; color:var(--cyan); font-size:14px; margin-top:14px; }
   </style>
 </head>
 <body>
@@ -32,8 +33,8 @@
     <a class="back" href="./index.html">← SYNTHRA</a>
     <div class="logo">SYN<span>THRA</span></div>
     <h1>DROP 001 WAITLIST</h1>
-    <p>Pages is not live yet. Leave an email. When the vault goes public you get first shot at Mirror Market Engine — $147, commercial rights included.</p>
-    <form action="https://formspree.io/f/REPLACE_ME" method="POST">
+    <p>First access to Mirror Market Engine — $147, commercial rights included. Email is stored locally until Formspree is wired.</p>
+    <form id="wl" action="https://formspree.io/f/REPLACE_ME" method="POST">
       <label for="email">Email</label>
       <input id="email" name="email" type="email" required placeholder="you@domain.com" />
       <label for="note">What skill should the Forge scan? (optional)</label>
@@ -41,7 +42,21 @@
       <input type="hidden" name="_subject" value="SYNTHRA Drop 001 waitlist" />
       <button type="submit">Hold my spot</button>
     </form>
-    <p style="margin-top:16px;font-size:12px">Swap Formspree <code>REPLACE_ME</code> after Pages is on.</p>
+    <p class="ok" id="ok">Spot held on this device. Swap Formspree REPLACE_ME after Pages is on.</p>
+    <p style="margin-top:16px;font-size:12px">User: Pages flip + Formspree. Grok cannot open Settings.</p>
   </div>
+  <script>
+    document.getElementById('wl').addEventListener('submit', function (e) {
+      var email = document.getElementById('email').value.trim();
+      var note = document.getElementById('note').value.trim();
+      var rows = JSON.parse(localStorage.getItem('synthra_waitlist') || '[]');
+      rows.push({ email: email, note: note, at: new Date().toISOString() });
+      localStorage.setItem('synthra_waitlist', JSON.stringify(rows));
+      if ((this.action || '').indexOf('REPLACE_ME') !== -1) {
+        e.preventDefault();
+        document.getElementById('ok').style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
