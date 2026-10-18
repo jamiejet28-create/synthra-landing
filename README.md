@@ -32,9 +32,9 @@ Then open `http://localhost:8000` in your browser.
 ## Known External Bottlenecks (Action Required)
 
 1. **GitHub Pages Source Activation**:
-   GitHub Actions tokens cannot self-provision Pages without repository administration rights. The repo owner must manually enable Pages once:
+   The deploy workflow auto-enables Pages via `actions/configure-pages@v5` with `enablement: true`, so no manual setup is required for the first deploy. If the site ever needs to be reconfigured manually:
    - Go to [Repository Pages Settings](https://github.com/jamiejet28-create/synthra-landing/settings/pages).
-   - Under **Build and deployment > Source**, select **Deploy from a branch** (Branch: `main`, folder: `/ (root)`), or select **GitHub Actions**.
+   - Under **Build and deployment > Source**, select **GitHub Actions**.
    - Save changes.
 
 2. **Formspree Endpoint Configuration**:
