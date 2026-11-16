@@ -19,6 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+        with:
+          # Automatically enable Pages (source: GitHub Actions) if it is not
+          # already configured, so the first deploy does not fail with
+          # "Get Pages site failed ... Not Found".
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
