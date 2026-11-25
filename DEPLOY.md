@@ -1,6 +1,7 @@
 # SYNTHRA Landing — Deploy Checklist
 
 Live still 404 until Pages is on OR transferred to Netlify/Vercel. Formspree still REPLACE_ME in waitlist.html.
+Rechecked 2026-11-25 ~8:47 AM EST: https://jamiejet28-create.github.io/synthra-landing/ remains 404. waitlist.html SHA 5b4a849e23cf2de8cf3d4e15e0129501e21027c4 unchanged.
 
 ## Preferred: Transfer to Netlify or Vercel (no GitHub Pages needed)
 1. Zip the repo folder (or drag-drop on Netlify/Vercel).
